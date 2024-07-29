@@ -446,10 +446,30 @@ You can import code blocks from files with the following syntax:
 @[code](../foo.js)
 ```
 
-If you want to partially import the file:
+If you want to partially import the file, you can do it via line numbers:
+
+````md
+@[code{1-10}](../foo.js)
+
+Or via a token that surrounds the desired code snippet:
 
 ```md
-@[code{1-10}](../foo.js)
+@[code{snippet-1}](../foo.js)
+```
+
+```js title=foo.js
+
+willNotShow();
+
+// start of snippet-1
+
+if(...) {
+  doSomething();
+}
+
+// end of snippet-1
+
+thisWontShowEither();
 ```
 
 The code language is inferred from the file extension, however, you can specify it like so:
@@ -464,3 +484,4 @@ supports all the syntax mentioned above:
 ```md
 @[code js|title=file.js|copy{2,4-5}](../foo.js)
 ```
+````
